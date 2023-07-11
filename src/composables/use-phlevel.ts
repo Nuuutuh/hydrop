@@ -1,42 +1,24 @@
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useData } from '@/composables/use-data';
+import { useScales } from '@/composables/use-scales';
+import { useDatasets } from '@/composables/use-datasets';
+export function usePhlevel() {
+  const { pHData } = useData();
+  const {scales} = useScales();
+  const {datasets} = useDatasets();
 
-export function usePhlevel(){
-    const { pHData } = useData();
-    const chartOptions = ref({
-     scales: {
-        x: {
-         title: {
-             display: true,
-            text: 'Time',
-            },
-        },
-        y: {
-            title: {
-            display: true,
-            text: 'pH Level',
-            },
-            suggestedMin: 0,
-            suggestedMax: 14,
-         },
-        },
-    });
+  const chartOptions = computed(() => ({
+    scales: scales.value,
+  }));
 
-    const chartData = computed(() => ({
+  const chartData = computed(() => ({
     labels: pHData.value.map((entry) => entry.time),
-    datasets: [
-      {
-        label: 'pH Level',
-        data: pHData.value.map((entry) => entry.ph),
-        borderColor: 'blue',
-        borderWidth: 1,
-        fill: false,
-      },
-    ],
+    datasets: datasets.value,
   }));
 
   return {
-    chartData,
+    scales,
     chartOptions,
+    chartData,
   };
 }

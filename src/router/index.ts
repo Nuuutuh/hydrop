@@ -1,58 +1,51 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/home-view.vue'
-
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-
-  {
-    path: '/ph',
-    name: 'ph',
-    component: () => import('../views/ph-level.vue')
-  
-  },
-
-  {
-    path: '/dont',
-    name: 'dont',
-    component: () => import('../views/dont-click.vue')
-  
-  },
-
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/about-view.vue')
-  },
-
-  {
-    path: '/team',
-    name: 'team',
-    component: () => import('../views/team-view.vue')
-  },
-
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../views/contact-view.vue')
-
-  },
-
-  {
-    path: '/settings',
-    name: 'settings',
-    component: () => import('../views/settings-view.vue')
-  },
-
-  
-]
-
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '@/views/home-view.vue';
+import PhLevelView from '@/views/ph-level.vue';
+import DontClickView from '@/views/dont-click.vue';
+import AboutView from '@/views/about-view.vue';
+import TeamView from '@/views/team-view.vue';
+import ContactView from '@/views/contact-view.vue';
+import SettingsView from '@/views/settings-view.vue';
+import { RouteNames } from '@/contants/rout-names';
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes: [
+    {
+      path: '/',
+      name: RouteNames.HOME,
+      component: HomeView,
+    },
+    {
+      path: '/ph',
+      name: RouteNames.PH,
+      component: PhLevelView,
+    },
+    {
+      path: '/dont',
+      name: RouteNames.DONT,
+      component: DontClickView,
+    },
+    {
+      path: '/about',
+      name: RouteNames.ABOUT,
+      component: AboutView,
+    },
+    {
+      path: '/team',
+      name: RouteNames.TEAM,
+      component: TeamView,
+    },
+    {
+      path: '/contact',
+      name: RouteNames.CONTACT,
+      component: ContactView,
+    },
+    {
+      path: '/settings',
+      name: RouteNames.SETTINGS,
+      component: SettingsView,
+    },
+  ],
+});
 
-export default router
+export default router;

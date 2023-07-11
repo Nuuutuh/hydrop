@@ -1,6 +1,6 @@
 <template>
     <div class="dont">
-   <h1>SHOW ME YOUR BOOBIES!!!</h1>
+   <h1>WOW</h1>
    </div>
 </template>
 
